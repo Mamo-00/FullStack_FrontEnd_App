@@ -8,6 +8,6 @@ from what the tutorial has shown.
 
 This project is written using Visual Studio Code as IDE. 
 
-There is also a backend repositroy for this project called FullStack_BackEnd_App where we have written a .Net Core Web API application
+There is also a backend repositroy for this project called FullStack_BackEnd where we have written a .Net Core Web API application
 
 Also there is a bug where the filtering of IDs are not working properly. You have to type in the id and then remove it using backspace to make the filtering work.
