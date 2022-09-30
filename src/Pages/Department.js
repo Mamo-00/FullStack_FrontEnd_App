@@ -5,11 +5,11 @@ const Department = () => {
 
   const [departments, setDepartments] = useState([]);
   const [modalTitle, setModalTitle] = useState("");
-  const [DepartmentName, setDepartmentName] = useState("");
-  const [DepartmentId, setDepartmentId] = useState(0);
+  const [departmentName, setDepartmentName] = useState("");
+  const [departmentId, setDepartmentId] = useState(0);
 
-  const [DepartmentIdFilter, setDepartmentIdFilter] = useState("");
-  const [DepartmentNameFilter, setDepartmentNameFilter] = useState("");
+  const [departmentIdFilter, setDepartmentIdFilter] = useState("");
+  const [departmentNameFilter, setDepartmentNameFilter] = useState("");
   const [departmentsWithoutFilter, setdepartmentsWithoutFilter] = useState([]);
 
  
@@ -28,16 +28,16 @@ const Department = () => {
   
 
   function FilterFn() {
-    var departmentIdFilter = DepartmentIdFilter;
-    var departmentNameFilter = DepartmentNameFilter;
+    var _departmentIdFilter = departmentIdFilter;
+    var _departmentNameFilter = departmentNameFilter;
 
     var filteredData = departmentsWithoutFilter.filter(
         (el)=>{
             return el.DepartmentId.toString().toLowerCase().includes(
-                departmentIdFilter.toString().trim().toLowerCase()
+                _departmentIdFilter.toString().trim().toLowerCase()
             )&&
             el.DepartmentName.toString().toLowerCase().includes(
-                departmentNameFilter.toString().trim().toLowerCase()
+                _departmentNameFilter.toString().trim().toLowerCase()
             )
         }
     );
@@ -108,8 +108,8 @@ const Department = () => {
             'Content-Type':'application/json'
         },
         body:JSON.stringify({
-            DepartmentId,
-            DepartmentName
+            DepartmentId: departmentId,
+            DepartmentName: departmentName
         })
     })
     .then(res=>res.json())
@@ -148,7 +148,7 @@ const Department = () => {
             'Content-Type':'application/json'
         },
         body:JSON.stringify({
-            DepartmentName
+            DepartmentName: departmentName
         })
     })
     .then(res=>res.json())
@@ -267,18 +267,18 @@ const Department = () => {
               <div className="input-group mb-3">
                 <span className="input-group-text">DepartmentName</span>
                 <input type="text" className="form-control"
-                value={DepartmentName}
+                value={departmentName}
                 onChange={changeDepartmentName}/>
               </div>
 
-              {DepartmentId===0?
+              {departmentId===0?
               <button type="button"
               className="btn btn-primary float-start"
               onClick={()=>createClick()}
               >Create</button>
               :null}
 
-              {DepartmentId!==0?
+              {departmentId!==0?
               <button type="button"
               className="btn btn-primary float-start"
               onClick={()=>updateClick()}
